@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 
 // api
 import getWordFromApi from '../services/api';
+//components
+import Header from './Header';
+import Dummy from './Dummy';
 // styles
 import '../styles/App.scss';
 import '../styles/Dummy.scss';
@@ -83,9 +86,8 @@ function App() {
 
   return (
     <div className='page'>
-      <header>
-        <h1 className='header__title'>Juego del ahorcado</h1>
-      </header>
+      {/*Header*/}
+      <Header></Header>
       <main className='main'>
         <section>
           <div className='solution'>
@@ -114,21 +116,8 @@ function App() {
             />
           </form>
         </section>
-        <section className={`dummy error-${getNumberOfErrors()}`}>
-          <span className='error-13 eye'></span>
-          <span className='error-12 eye'></span>
-          <span className='error-11 line'></span>
-          <span className='error-10 line'></span>
-          <span className='error-9  line'></span>
-          <span className='error-8  line'></span>
-          <span className='error-7  line'></span>
-          <span className='error-6  head'></span>
-          <span className='error-5  line'></span>
-          <span className='error-4  line'></span>
-          <span className='error-3  line'></span>
-          <span className='error-2  line'></span>
-          <span className='error-1  line'></span>
-        </section>
+        {/*Dummy*/}
+        <Dummy getNumberOfErrors={getNumberOfErrors()}/>
       </main>
     </div>
   );
