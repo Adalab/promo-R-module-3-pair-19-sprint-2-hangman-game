@@ -7,9 +7,10 @@ import Header from './Header';
 import Dummy from './Dummy';
 import SolutionLetters from './SolutionLetters';
 import ErrorLetters from './ErrorLetters';
+import Form from './Form';
 // styles
 import '../styles/App.scss';
-import '../styles/Form.scss';
+
 
 
 function App() {
@@ -25,20 +26,16 @@ function App() {
 
   // events
 
-  const handleKeyDown = (ev) => {
+  const handleKeyDown = (value) => {
     // Sabrías decir para qué es esta línea
-    ev.target.setSelectionRange(0, 1);
+    value.setSelectionRange(0, 1);
   };
 
-  const handleChange = (ev) => {
+  const handleChange = (value) => {
     let re = /^[a-zA-ZñÑá-úÁ-Ú´]$/; //add regular pattern 
-    if (re.test(ev.target.value) || ev.target.value === '') {
-      handleLastLetter(ev.target.value);
+    if (re.test(value) || value === '') {
+      handleLastLetter(value);
     }
-  };
-
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
   };
 
   const getNumberOfErrors = () => {
@@ -48,9 +45,6 @@ function App() {
     return errorLetters.length;
   };
 
- 
-
- 
   const handleLastLetter = (value) => {
     value = value.toLocaleLowerCase();
     setLastLetter(value);
@@ -71,23 +65,8 @@ function App() {
           <SolutionLetters word = {word} userLetters = {userLetters}/>
           {/*Error*/}
           <ErrorLetters word = {word} userLetters = {userLetters}/>
-          <form className='form' onSubmit={handleSubmit}>
-            <label className='title' htmlFor='last-letter'>
-              Escribe una letra:
-            </label>
-            <input
-              autoFocus
-              autoComplete='off'
-              className='form__input'
-              maxLength='1'
-              type='text'
-              name='last-letter'
-              id='last-letter'
-              value={lastLetter}
-              onKeyDown={handleKeyDown}
-              onChange={handleChange}
-            />
-          </form>
+          {/*Form*/}
+          <Form lastLetter={lastLetter} handleChange={handleChange} handleKeyDown={handleKeyDown} ></Form>
         </section>
         {/*Dummy*/}
         <Dummy getNumberOfErrors={getNumberOfErrors()}/>
