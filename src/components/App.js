@@ -8,6 +8,7 @@ import Dummy from './Dummy';
 import SolutionLetters from './SolutionLetters';
 import ErrorLetters from './ErrorLetters';
 import Form from './Form';
+import Footer from './Footer';
 // styles
 import '../styles/App.scss';
 
@@ -71,6 +72,8 @@ function App() {
         {/*Dummy*/}
         <Dummy getNumberOfErrors={getNumberOfErrors()}/>
       </main>
+      {/*Footer*/}
+      <Footer/>
     </div>
   );
 }
