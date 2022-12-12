@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
-
+import {Routes, Route} from 'react-router-dom';
 // api
 import getWordFromApi from '../services/api';
 //components
 import Header from './Header';
-import Dummy from './Dummy';
 import SolutionLetters from './SolutionLetters';
 import ErrorLetters from './ErrorLetters';
 import Form from './Form';
+import Instructions from './Instructions';
+import Options from './Options';
+import Dummy from './Dummy';
 import Footer from './Footer';
+
 // styles
 import '../styles/App.scss';
+
 
 
 
@@ -61,14 +65,20 @@ function App() {
       {/*Header*/}
       <Header></Header>
       <main className='main'>
-        <section>
-          {/*solution*/}
-          <SolutionLetters word = {word} userLetters = {userLetters}/>
-          {/*Error*/}
-          <ErrorLetters word = {word} userLetters = {userLetters}/>
-          {/*Form*/}
-          <Form lastLetter={lastLetter} handleChange={handleChange} handleKeyDown={handleKeyDown} ></Form>
-        </section>
+        <Routes>
+            <Route path='/' element={
+              <section>
+                {/*solution*/}
+                <SolutionLetters word = {word} userLetters = {userLetters}/>
+                {/*Error*/}
+                <ErrorLetters word = {word} userLetters = {userLetters}/>
+                {/*Form*/}
+                <Form lastLetter={lastLetter} handleChange={handleChange} handleKeyDown={handleKeyDown} ></Form>
+              </section>
+            }/>
+            <Route path='/instructions' element={<Instructions/>}/>
+            <Route path='/options' element={<Options/>}/>
+        </Routes>
         {/*Dummy*/}
         <Dummy getNumberOfErrors={getNumberOfErrors()}/>
       </main>
