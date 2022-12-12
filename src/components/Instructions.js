@@ -1,7 +1,7 @@
 function Instructions(props) {
 
     return (
-        <section class="instructions">
+        <section className="instructions">
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
                 provident nisi voluptatem est nostrum optio perferendis doloremque,

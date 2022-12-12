@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     getWordFromApi().then((word) => {
-      setWord(word);
+      //setWord(word);
     });
   }, []);
 
@@ -60,6 +60,12 @@ function App() {
     }
   };
 
+  const handleUserWord = (value) => {
+    setWord(value);
+    setUserLetters([]);
+    setLastLetter('');
+  }
+
   return (
     <div className='page'>
       {/*Header*/}
@@ -77,7 +83,7 @@ function App() {
               </section>
             }/>
             <Route path='/instructions' element={<Instructions/>}/>
-            <Route path='/options' element={<Options/>}/>
+            <Route path='/options' element={<Options word={word} handleUserWord ={handleUserWord}/>}/>
         </Routes>
         {/*Dummy*/}
         <Dummy getNumberOfErrors={getNumberOfErrors()}/>
